@@ -122,6 +122,8 @@ export const ListTwoPesson = styled.ul`
         justify-content: center;
         padding: 18px 18px;
         background: #ffffff;
+        height: 120px;
+        text-align: center;
         margin-right: 6px;
         border-radius: 8px;
         margin-top: 15px;
@@ -134,12 +136,23 @@ export const ListTwoPesson = styled.ul`
         }
       }
     }
+
+    @media (max-width: 878px) {
+      div {
+        display: flex;
+        flex-direction: column;
+
+        span {
+          height: 120px;
+          text-align: center;
+        }
+      }
+    }
   }
 `;
 
 export const BoxForm = styled.div`
   display: flex;
-
   justify-content: center;
   padding: 50px 30px 50px 30px;
   height: auto;
@@ -150,12 +163,12 @@ export const BoxForm = styled.div`
     text-align: center;
     font-size: 3em;
     color: #ffffff;
-    margin-right: 15px;
+    margin-right: 35px;
 
-    div {
+    > div {
       background: #652581;
-      margin-top: 10px;
-      span {
+      margin-top: 25px;
+      p {
         font-size: 0.5em;
         margin-bottom: 40px;
         transition: ease 0.5s;
@@ -167,7 +180,7 @@ export const BoxForm = styled.div`
     }
   }
 
-  div {
+  > div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -184,7 +197,6 @@ export const BoxForm = styled.div`
 
     form {
       display: flex;
-
       flex-direction: column;
 
       label {
@@ -192,13 +204,20 @@ export const BoxForm = styled.div`
         margin: 10px 0 5px 0;
       }
 
-      input {
+      input,
+      select {
         background: #ffffff;
         border: 1px solid #dddddd;
         height: 45px;
         padding: 13px 0 13px 15px;
         width: 300px;
         border-radius: 4px;
+        font-size: 14px;
+        color: #2e2e2e;
+      }
+
+      span {
+        color: red;
       }
 
       button {
@@ -216,6 +235,31 @@ export const BoxForm = styled.div`
 
         :hover {
           background: ${darken(0.05, '#1aa06f')};
+        }
+      }
+    }
+  }
+
+  @media (max-width: 812px) {
+    flex-direction: column;
+    align-items: center;
+
+    div {
+      width: 360px;
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 15px;
+
+      > div {
+        width: 100%;
+        p {
+          width: 100%;
         }
       }
     }

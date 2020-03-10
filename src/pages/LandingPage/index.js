@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Form } from '@unform/web';
-import {} from 'react-icons/fa';
+import * as Yup from 'yup';
 
 import Input from '../../Components/Input';
 import InputMask from '../../Components/InpuMask';
+import Select from '../../Components/Select';
 import {
   Container,
   Content,
@@ -14,6 +15,35 @@ import {
 } from './styles';
 
 export default function LandingPage() {
+  const refForm = useRef(null);
+
+  async function handleSubmit(data) {
+    try {
+      refForm.current.setErrors({});
+
+      const schema = Yup.object().shape({
+        name: Yup.string().required('Campo obrigatório'),
+        email: Yup.string()
+          .email('Insira um e-mail válido')
+          .required('Campo obrigatório'),
+        password: Yup.string().required('Campo obrigatório'),
+        birthDate: Yup.string().required('Campo obrigatório'),
+        sex: Yup.string().required('Campo obrigatório'),
+      });
+
+      await schema.validate(data, { abortEarly: false });
+    } catch (err) {
+      const validationErrors = {};
+      if (err instanceof Yup.ValidationError) {
+        err.inner.forEach(error => {
+          validationErrors[error.path] = error.message;
+        });
+
+        refForm.current.setErrors(validationErrors);
+      }
+    }
+  }
+
   return (
     <Container>
       <header>
@@ -85,23 +115,24 @@ export default function LandingPage() {
             Faça parte da revolução dos cupons de descontos e adquira já a sua
             franquia.
             <div>
-              <span>Mais de 120 franquias pelo Brasil</span>
-              <span>
+              <p>Mais de 120 franquias pelo Brasil</p>
+              <p>
                 Cerca de 93% dos franqueados indicariam a BomCupom pra um amigo
-              </span>
-              <span>Presentes em 21 estados do Brasil</span>
+              </p>
+              <p>Presentes em 21 estados do Brasil</p>
             </div>
           </section>
           <div>
             <h1>Cadastre-se</h1>
-            <Form>
+            <Form onSubmit={handleSubmit} ref={refForm}>
               <Input name="name" label="Seu nome" placeholder="Nome Completo" />
               <Input
-                name="email"
                 label="Seu email para contato"
-                placeholder="exemplo@exemplo.com"
+                name="email"
+                placeholder="exemplo@email.com"
               />
               <Input
+                type="password"
                 name="password"
                 label="Sua senha"
                 placeholder="**********"
@@ -110,8 +141,13 @@ export default function LandingPage() {
                 name="birthDate"
                 label="Sua data de nascimento"
                 placeholder="Data de nascimento"
+                mask="99/99/9999"
               />
-              <Input name="sex" label="Seu sexo" placeholder="Sexo" />
+              <Select name="sex" label="Seu sexo" placeholder="Sexo">
+                <option defaultValue="" />
+                <option value="masculino">masculino</option>
+                <option value="feminino">feminino</option>
+              </Select>
               <button type="submit">Registrar</button>
             </Form>
           </div>

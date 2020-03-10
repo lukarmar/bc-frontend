@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
 import propTypes from 'prop-types';
 
-export default function Input({ name, label, ...rest }) {
+export default function Select({ name, label, ...rest }) {
   const inputRef = useRef(null);
 
   const { fieldName, defaultValue, registerField, error } = useField(name);
@@ -19,7 +19,7 @@ export default function Input({ name, label, ...rest }) {
     <>
       <label htmlFor={fieldName}>{label}</label>
 
-      <input
+      <select
         id={fieldName}
         ref={inputRef}
         defaultValue={defaultValue}
@@ -31,11 +31,11 @@ export default function Input({ name, label, ...rest }) {
   );
 }
 
-Input.propTypes = {
+Select.propTypes = {
   name: propTypes.string.isRequired,
   label: propTypes.string,
 };
 
-Input.defaultProps = {
+Select.defaultProps = {
   label: null,
 };
