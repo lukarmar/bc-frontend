@@ -26,6 +26,8 @@ export default function LandingPage() {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
 
+  document.title = 'Bom Cupom | Landing Page';
+
   async function handleSubmit(data, { reset }) {
     try {
       /* validação de erros para o form */

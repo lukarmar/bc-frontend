@@ -3,6 +3,7 @@ import React from 'react';
 import { Container, Banner, Image } from './styles';
 
 export default function ThankyouPage() {
+  document.title = 'Bom Cupom | Thank You Page';
   return (
     <Container>
       <Banner>
