@@ -62,6 +62,7 @@ export default function LandingPage() {
     } catch (err) {
       /* verifica se o erro é no backend */
       setLoading(false);
+      console.log(typeof err);
       if (err.name === 'Error') {
         toaster.notify('Erro ao cadastrar', {
           position: 'top-right',
