@@ -1,10 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 /* modulos externos */
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import toaster from 'toasted-notes';
 import { useHistory } from 'react-router-dom';
+import { PulseLoader } from 'react-spinners';
 
 /* modulos internos */
 import api from '../../services/api';
@@ -23,11 +24,13 @@ import {
 export default function LandingPage() {
   const refForm = useRef(null);
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(data, { reset }) {
     try {
       /* validação de erros para o form */
       refForm.current.setErrors({});
+      setLoading(true);
 
       const schema = Yup.object().shape({
         name: Yup.string().required('Campo obrigatório'),
@@ -50,10 +53,13 @@ export default function LandingPage() {
         birthDate,
         sex,
       });
+
+      setLoading(false);
       /* caso status ok, redireciona para a página ThankYouPage */
       history.push('/success');
     } catch (err) {
       /* verifica se o erro é no backend */
+      setLoading(false);
       if (err.name === 'Error') {
         toaster.notify('Erro ao cadastrar', {
           position: 'top-right',
@@ -179,7 +185,13 @@ export default function LandingPage() {
                 <option value="masculino">masculino</option>
                 <option value="feminino">feminino</option>
               </Select>
-              <button type="submit">Registrar</button>
+              <button type="submit">
+                {loading ? (
+                  <PulseLoader size={12} color="#ffffff" />
+                ) : (
+                  'Registrar'
+                )}
+              </button>
             </Form>
           </div>
         </BoxForm>

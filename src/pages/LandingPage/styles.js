@@ -229,7 +229,7 @@ export const BoxForm = styled.div`
 
       button {
         width: 100%;
-        height: auto;
+        height: 45px;
         padding: 13px 65px 13px 65px;
         background: #1aa06f;
         outline: none;
@@ -242,6 +242,10 @@ export const BoxForm = styled.div`
 
         :hover {
           background: ${darken(0.05, '#1aa06f')};
+        }
+
+        svg {
+          width: 40%;
         }
       }
     }
