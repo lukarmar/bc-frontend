@@ -1,7 +1,13 @@
 import React, { useRef } from 'react';
+
+/* modulos externos */
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
+import toaster from 'toasted-notes';
+import { useHistory } from 'react-router-dom';
 
+/* modulos internos */
+import api from '../../services/api';
 import Input from '../../Components/Input';
 import InputMask from '../../Components/InpuMask';
 import Select from '../../Components/Select';
@@ -16,9 +22,11 @@ import {
 
 export default function LandingPage() {
   const refForm = useRef(null);
+  const history = useHistory();
 
-  async function handleSubmit(data) {
+  async function handleSubmit(data, { reset }) {
     try {
+      /* validação de erros para o form */
       refForm.current.setErrors({});
 
       const schema = Yup.object().shape({
@@ -26,14 +34,35 @@ export default function LandingPage() {
         email: Yup.string()
           .email('Insira um e-mail válido')
           .required('Campo obrigatório'),
-        password: Yup.string().required('Campo obrigatório'),
+        password: Yup.string()
+          .min(6, 'Campo mínimo de 6 caracteres')
+          .required('Campo obrigatório'),
         birthDate: Yup.string().required('Campo obrigatório'),
         sex: Yup.string().required('Campo obrigatório'),
       });
 
       await schema.validate(data, { abortEarly: false });
+      const { name, password, email, birthDate, sex } = data;
+      await api.post('user', {
+        name,
+        password,
+        email,
+        birthDate,
+        sex,
+      });
+      /* caso status ok, redireciona para a página ThankYouPage */
+      history.push('/success');
     } catch (err) {
+      /* verifica se o erro é no backend */
+      if (err.name === 'Error') {
+        toaster.notify('E-mail já cadastrado', {
+          position: 'top-right',
+          duration: 4000,
+          type: 'error',
+        });
+      }
       const validationErrors = {};
+      /* verifica se o erro é na validação */
       if (err instanceof Yup.ValidationError) {
         err.inner.forEach(error => {
           validationErrors[error.path] = error.message;
@@ -42,6 +71,8 @@ export default function LandingPage() {
         refForm.current.setErrors(validationErrors);
       }
     }
+    /* reseta os valores nos forms */
+    reset();
   }
 
   return (

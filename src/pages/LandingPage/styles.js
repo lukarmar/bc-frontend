@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
+  /* header da aplicação */
   header {
     width: 100%;
     height: auto;
@@ -22,12 +23,15 @@ export const Container = styled.div`
     }
   }
 `;
+
+/* corpo da aplicação */
 export const Content = styled.main`
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
 `;
+/* apresentação da aplicação */
 export const Banner = styled.div`
   position: relative;
   display: flex;
@@ -46,7 +50,7 @@ export const Banner = styled.div`
     background: #652581;
     clip-path: polygon(51% 43%, 0 0, 100% 0);
   }
-
+  /* dizeres  */
   div {
     display: flex;
     flex-direction: column;
@@ -71,6 +75,7 @@ export const Banner = styled.div`
     }
   }
 `;
+/* container de benefícios */
 export const Benefits = styled.div`
   width: 100%;
   display: flex;
@@ -94,6 +99,8 @@ export const Benefits = styled.div`
     }
   }
 `;
+
+/* elaboração dos flex's de cada usuário */
 export const ListTwoPesson = styled.ul`
   display: flex;
   flex-direction: column;
@@ -136,7 +143,7 @@ export const ListTwoPesson = styled.ul`
         }
       }
     }
-
+    /*responsividade*/
     @media (max-width: 878px) {
       div {
         display: flex;
@@ -150,7 +157,7 @@ export const ListTwoPesson = styled.ul`
     }
   }
 `;
-
+/* caixa-container do formulário */
 export const BoxForm = styled.div`
   display: flex;
   justify-content: center;
@@ -239,7 +246,7 @@ export const BoxForm = styled.div`
       }
     }
   }
-
+  /*responsividade*/
   @media (max-width: 812px) {
     flex-direction: column;
     align-items: center;

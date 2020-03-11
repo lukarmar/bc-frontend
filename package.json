@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "@unform/core": "^2.0.0",
     "@unform/web": "^2.0.0",
+    "axios": "^0.19.2",
     "history": "^4.10.1",
     "polished": "^3.4.4",
     "prop-types": "^15.7.2",
@@ -18,7 +19,9 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "react-select": "^3.0.8",
+    "react-spring": "^8.0.27",
     "styled-components": "^5.0.1",
+    "toasted-notes": "^3.2.0",
     "yup": "^0.28.3"
   },
   "scripts": {
