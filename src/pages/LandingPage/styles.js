@@ -228,9 +228,9 @@ export const BoxForm = styled.div`
       }
 
       button {
-        width: 100%;
+        width: 300px;
         height: 45px;
-        padding: 13px 65px 13px 65px;
+        padding: 10px 65px 10px 65px;
         background: #1aa06f;
         outline: none;
         border: 0;
@@ -240,12 +240,12 @@ export const BoxForm = styled.div`
         font-weight: bold;
         transition: ease 0.4s;
 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
         :hover {
           background: ${darken(0.05, '#1aa06f')};
-        }
-
-        svg {
-          width: 40%;
         }
       }
     }

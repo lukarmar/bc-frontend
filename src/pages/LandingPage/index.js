@@ -5,7 +5,7 @@ import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import toaster from 'toasted-notes';
 import { useHistory } from 'react-router-dom';
-import { PulseLoader } from 'react-spinners';
+import Loader from 'react-loader-spinner';
 
 /* modulos internos */
 import api from '../../services/api';
@@ -189,9 +189,14 @@ export default function LandingPage() {
               </Select>
               <button type="submit">
                 {loading ? (
-                  <PulseLoader size={12} color="#ffffff" />
+                  <Loader
+                    type="ThreeDots"
+                    height={22}
+                    width={60}
+                    color="#ffffff"
+                  />
                 ) : (
-                  'Registrar'
+                  'REGISTRAR'
                 )}
               </button>
             </Form>
