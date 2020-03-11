@@ -55,7 +55,7 @@ export default function LandingPage() {
     } catch (err) {
       /* verifica se o erro é no backend */
       if (err.name === 'Error') {
-        toaster.notify('E-mail já cadastrado', {
+        toaster.notify('Erro ao cadastrar', {
           position: 'top-right',
           duration: 4000,
           type: 'error',
