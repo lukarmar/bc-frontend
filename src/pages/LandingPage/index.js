@@ -97,7 +97,7 @@ export default function LandingPage() {
               alt="cupons"
             />
             <h1>Franquia Bom Cupom</h1>
-            <h2>Mais que a penas cumpons de descontos</h2>
+            <h2>Mais que apenas cupons de descontos</h2>
             <h3>
               Faça parte da revolução dos cupons de descontos e adquira já a sua
               franquia.
