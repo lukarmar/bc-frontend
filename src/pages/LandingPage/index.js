@@ -197,7 +197,7 @@ export default function LandingPage() {
                     color="#ffffff"
                   />
                 ) : (
-                  'REGISTRAR'
+                  'CADASTRAR'
                 )}
               </button>
             </Form>
