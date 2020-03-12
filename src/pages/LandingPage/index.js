@@ -150,7 +150,7 @@ export default function LandingPage() {
             </ListTwoPesson>
           </div>
         </Benefits>
-        <BoxForm>
+        <BoxForm loading={loading}>
           <section>
             Faça parte da revolução dos cupons de descontos e adquira já a sua
             franquia.
@@ -188,7 +188,7 @@ export default function LandingPage() {
                 <option value="masculino">masculino</option>
                 <option value="feminino">feminino</option>
               </Select>
-              <button type="submit">
+              <button type="submit" disabled={loading}>
                 {loading ? (
                   <Loader
                     type="ThreeDots"
