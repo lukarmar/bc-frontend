@@ -20,6 +20,7 @@ export default function Select({ name, label, ...rest }) {
       <label htmlFor={fieldName}>{label}</label>
 
       <select
+        className={error && 'error'}
         id={fieldName}
         ref={inputRef}
         defaultValue={defaultValue}

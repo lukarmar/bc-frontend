@@ -24,6 +24,7 @@ export default function Input({ name, label, ...rest }) {
         ref={inputRef}
         defaultValue={defaultValue}
         {...rest}
+        className={error && 'error'}
       />
 
       {error && <span className="error">{error}</span>}

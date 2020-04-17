@@ -226,6 +226,9 @@ export const BoxForm = styled.div`
       span {
         color: red;
       }
+      .error {
+        border-color: red;
+      }
 
       button {
         width: 300px;
@@ -239,6 +242,8 @@ export const BoxForm = styled.div`
         color: #ffffff;
         font-weight: bold;
         transition: ease 0.4s;
+        opacity: ${props => (props.loading ? '0.7' : '1')};
+        cursor: ${props => props.loading && 'progress'};
 
         display: flex;
         justify-content: center;

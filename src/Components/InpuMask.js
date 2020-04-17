@@ -27,7 +27,7 @@ const InputMask: React.FC<Props> = ({ name, label, ...rest }) => {
 
   return (<>
     <label htmlFor={fieldName}>{label}</label>
-    <ReactInputMask ref={inputRef} defaultValue={defaultValue} {...rest} />
+    <ReactInputMask className={error && 'error'} ref={inputRef} defaultValue={defaultValue} {...rest} />
     {error && <span className="error">{error}</span>}
     </>
   )
