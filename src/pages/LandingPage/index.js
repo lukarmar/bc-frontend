@@ -81,7 +81,6 @@ export default function LandingPage() {
       }
     }
     /* reseta os valores nos forms */
-    reset();
   }
 
   return (
